@@ -9,13 +9,24 @@ document.addEventListener("DOMContentLoaded", () => {
     es: {
       headerName: "Raúl Esteban Totaitive Beltran",
       headerSubtitle: "Servicios digitales - portafolio personal",
-      headerBtn: "Ver mi CV",
 
-      nav: ["Servicios", "Portafolio", "Sobre mí", "Contacto"],
+      nav: {
+        about: "Sobre mí",
+        services: "Servicios",
+        portfolio: "Portafolio",
+        contact: "Contacto",
+        cv: "Mi CV"
+      },
+
+      sobreMiTitle: "Sobre mí",
+      aboutH3: [
+        "Perfil profesional",
+        "Experiencia e intereses técnicos",
+        "Habilidades y enfoque personal"
+      ],
 
       serviciosTitle: "Servicios",
       serviciosItems: [
-        "Transcripción de textos",
         "Diseño de presentaciones",
         "Digitación de datos",
         "Edición básica de texto",
@@ -24,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       portafolioTitle: "Mi Portafolio",
       portafolioIntro: "Aquí puedes ver algunos proyectos:",
-
       projects: [
         {
           title: "Control de gastos personales con registro automatizado (Excel)",
@@ -40,23 +50,37 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       ],
 
-      sobreMiTitle: "Sobre mí",
-
       contactoTitle: "Contacto",
       contactoIntro: "¿Te interesa trabajar conmigo? Escríbeme:",
-      footer: "© 2026 Raúl Esteban Totaitive"
+
+      cvTitle: "Mi CV (Hoja de vida)",
+      cvView: "Ver mi CV",
+      cvDownload: "Descargar CV",
+
+      footer: "© 2026 Raúl Esteban Totaitive Beltran"
     },
 
     en: {
       headerName: "Raul Esteban Totaitive Beltran",
       headerSubtitle: "Digital services - personal portfolio",
-      headerBtn: "View my CV",
 
-      nav: ["Services", "Portfolio", "About Me", "Contact"],
+      nav: {
+        about: "About Me",
+        services: "Services",
+        portfolio: "Portfolio",
+        contact: "Contact",
+        cv: "My CV"
+      },
+
+      sobreMiTitle: "About Me",
+      aboutH3: [
+        "Professional Profile",
+        "Experience and Technical Interests",
+        "Skills and Personal Approach"
+      ],
 
       serviciosTitle: "Services",
       serviciosItems: [
-        "Text transcription",
         "Presentation design",
         "Data entry",
         "Basic text editing",
@@ -65,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       portafolioTitle: "My Portfolio",
       portafolioIntro: "Here are some projects:",
-
       projects: [
         {
           title: "Personal expense tracker with automated logging (Excel)",
@@ -81,11 +104,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       ],
 
-      sobreMiTitle: "About Me",
-
       contactoTitle: "Contact",
       contactoIntro: "Interested in working with me? Message me:",
-      footer: "© 2026 Raul Esteban Totaitive"
+
+      cvTitle: "My CV (Resume)",
+      cvView: "View my CV",
+      cvDownload: "Download CV",
+
+      footer: "© 2026 Raul Esteban Totaitive Beltran"
     }
   };
 
@@ -98,15 +124,22 @@ document.addEventListener("DOMContentLoaded", () => {
     // Header
     const headerH1 = document.querySelector("header h1");
     const headerP = document.querySelector("header p");
-    const headerBtn = document.querySelector("header .button");
     if (headerH1) headerH1.textContent = t.headerName;
     if (headerP) headerP.textContent = t.headerSubtitle;
-    if (headerBtn) headerBtn.textContent = t.headerBtn;
 
-    // Nav links (solo texto)
-    const navLinks = document.querySelectorAll(".topnav .nav-link");
-    navLinks.forEach((a, i) => {
-      if (t.nav[i]) a.textContent = t.nav[i];
+    // Navbar usando data-i18n
+    document.querySelectorAll(".topnav .nav-link").forEach(link => {
+      const key = link.dataset.i18n;
+      if (key && t.nav[key]) link.textContent = t.nav[key];
+    });
+
+    // Sobre mí: título + h3
+    const aboutTitle = document.querySelector("#sobre-mi h2");
+    if (aboutTitle) aboutTitle.textContent = t.sobreMiTitle;
+
+    const aboutH3 = document.querySelectorAll("#sobre-mi .about-text h3");
+    aboutH3.forEach((el, i) => {
+      if (t.aboutH3[i]) el.textContent = t.aboutH3[i];
     });
 
     // Servicios
@@ -125,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const pIntro = document.querySelector("#portafolio p");
     if (pIntro) pIntro.textContent = t.portafolioIntro;
 
-    const projectTitles = document.querySelectorAll("#portafolio ul li strong");
+    const projectTitles = document.querySelectorAll("#portafolio ul li h3");
     const projectDescs = document.querySelectorAll("#portafolio ul li p");
     projectTitles.forEach((el, i) => {
       if (t.projects[i]) el.textContent = t.projects[i].title;
@@ -134,16 +167,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (t.projects[i]) el.textContent = t.projects[i].desc;
     });
 
-    // Sobre mí (solo el título, porque tus párrafos son largos)
-    const aboutTitle = document.querySelector("#sobre-mi h2");
-    if (aboutTitle) aboutTitle.textContent = t.sobreMiTitle;
-
     // Contacto
     const cTitle = document.querySelector("#contacto h2");
     if (cTitle) cTitle.textContent = t.contactoTitle;
 
     const cIntro = document.querySelector("#contacto p");
     if (cIntro) cIntro.textContent = t.contactoIntro;
+
+    // CV
+    const cvTitle = document.querySelector("#cv h2");
+    if (cvTitle) cvTitle.textContent = t.cvTitle;
+
+    const cvLinks = document.querySelectorAll("#cv a.button");
+    if (cvLinks[0]) cvLinks[0].textContent = t.cvView;
+    if (cvLinks[1]) cvLinks[1].textContent = t.cvDownload;
 
     // Footer
     const f = document.querySelector("footer p");
@@ -157,6 +194,5 @@ document.addEventListener("DOMContentLoaded", () => {
     setLang(lang === "es" ? "en" : "es");
   });
 
-  // Inicial
   setLang("es");
 });
