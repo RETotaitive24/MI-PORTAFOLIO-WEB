@@ -6,20 +6,51 @@
     <title>Mi portafolio Raul Totaitive</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<script src="lang.js"></script>
+<script src="scrollspy.js"></script>
 <body>
+    <nav class="topnav">
+  <div class="container nav-inner">
+    <a href="#servicios" class="nav-link active">Servicios</a>
+    <a href="#portafolio" class="nav-link">Portafolio</a>
+    <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+    <a href="#contacto" class="nav-link">Contacto</a>
+    <a href="#cv" class="nav-link">Mi CV</a>
+
+    <button class="nav-lang" id="langToggle" type="button">
+      ES <span class="chev">▾</span>
+    </button>
+  </div>
+</nav>
+
+
     <header>
         <div class="container">
-            <h1>Raúl Esteban Totaitive Beltran</h1>
+            <h1 class="hero-name">Raúl Esteban Totaitive Beltran</h1>
             <p>Servicios digitales - portafolio personal</p>
-            <a href="Raul_Esteban_Totaitive_CV.pdf" class="button">Ver mi CV</a>
         </div>
+        <div class="hero-photo">
+    <img src="Foto Esteban.jpeg" alt="Foto de Raúl">
+  </div>
+  <a href="Raul_Esteban_Totaitive_CV.pdf" class="button">Ver mi CV</a>
     </header>
-    
+    <section id="sobre-mi">
+        <div class="container">
+            <h2>Sobre mí</h2>
+            <p>
+            Soy estudiante de Ingeniería de Sistemas, con un fuerte interés en los servicios digitales y en la aplicación de soluciones tecnológicas que contribuyan a la optimización de procesos y a la mejora de la eficiencia operativa. Me motiva analizar problemas, identificar oportunidades de mejora y desarrollar soluciones prácticas y funcionales, adaptadas a las necesidades específicas de cada persona o negocio.
+
+Me caracterizo por ser una persona responsable, organizada y con disposición constante para el aprendizaje. Disfruto enfrentar retos técnicos que me permitan fortalecer mis conocimientos y habilidades, así como adquirir experiencia en el uso de herramientas digitales orientadas a la automatización y al manejo eficiente de la información.
+
+En los últimos años he enfocado mi interés en la automatización de procesos, especialmente mediante el uso de Excel y VBA, desarrollando soluciones que permiten reducir tareas repetitivas, optimizar tiempos y mejorar la gestión de datos. Mi objetivo profesional es continuar formándome en el área tecnológica y participar en proyectos donde pueda aportar valor mediante soluciones bien estructuradas, eficientes y orientadas a resultados.            </p>
+        </div>
+    </section>
+
     <section id="servicios">
         <div class="container">
             <h2>Servicios</h2>
             <ul>
-                <li>Transcripción de textos</li>
+                
                 <li>Diseño de presentaciones</li>
                 <li>Digitación de datos</li>
                 <li>Edición básica de texto</li>
@@ -53,21 +84,6 @@
   </div>
 </section>
 
-    
-    <section id="sobre-mi">
-        <div class="container">
-            <h2>Sobre mí</h2>
-            <p>
-            Soy estudiante de Ingeniería de Sistemas y me apasionan los servicios digitales. Me gusta ayudar a resolver
-            problemas y crear soluciones rápidas y efectivas según las necesidades de cada persona o negocio.
-            </p>
-            <p>
-            Disfruto los retos, los videojuegos y aprender cosas nuevas. Últimamente me ha interesado optimizar procesos
-            y ahorrar tiempo mediante automatización, especialmente con herramientas como Excel.
-            </p>
-        </div>
-    </section>
-
     <section id="contacto">
   <div class="container">
     <h2>Contacto</h2>
@@ -91,7 +107,7 @@
     
     <footer>
         <div class="container">
-            <p>&copy; 2026 Raúl Esteban Totaitive</p>
+            <p>&copy; 2026 Raúl Esteban Totaitive Beltran</p>
         </div>
     </footer>
 </body>
